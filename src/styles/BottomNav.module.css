@@ -1,0 +1,34 @@
+.mainNav{
+    width: 100%;
+    border: 1px solid #3D3D3D;
+    position:fixed;
+    bottom: 0;
+    padding: 10px;
+    display: none;
+    justify-content: space-around;
+    z-index: 10;
+    background-color: #3D3D3D;
+    text-align: center;
+}
+.user{
+    margin: 0px 10px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #3D3D3D;
+}
+@media only screen and (max-width:600px) {
+    .mainNav{
+        display: flex;
+    }
+}
+.home,.newpost,.search,.heart,.profile{
+    cursor: pointer;
+}
+.navbarText{
+    color: lightgray;
+    font-size: 12px;
+    margin-top: 4px;
+    text-align: center;
+}
