@@ -14,7 +14,7 @@ function BottomNav() {
     return (
         <div className={styles.mainNav}>
             <div className={styles.home} >
-                <img src={home} alt='home'/>
+                <img src={home} alt='home' style={{opacity: 0.2}}/>
                 <div className={styles.navbarText}>Noticias</div>
             </div>
             <a href="">
@@ -24,15 +24,15 @@ function BottomNav() {
                 </div>
             </a>
             <div className={styles.newpost} >
-                    <img src={tv} alt='newpost'/>
+                    <img src={tv} alt='newpost' style={{opacity: 0.2}}/>
                     <div className={styles.navbarText}>TV</div>
                 </div>
             <div className={styles.heart} >
-                <img src={live} alt='radio'/>
+                <img src={live} alt='radio' style={{opacity: 0.2}}/>
                 <div className={styles.navbarText}>Radio</div>
             </div>
             <div className={styles.heart} >
-                <img src={perfil} alt='perfil'/>
+                <img src={perfil} alt='perfil' style={{opacity: 0.2}}/>
                 <div className={styles.navbarText}>Perfil</div>
             </div>
         </div>

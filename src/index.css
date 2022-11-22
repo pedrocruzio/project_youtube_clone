@@ -82,6 +82,7 @@ a {
   .search-bar{
     width:150px;
   }
+  .logo {height: 10px}
 }
 
 @media screen and (max-width: 600px) {
