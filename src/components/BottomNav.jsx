@@ -17,12 +17,10 @@ function BottomNav() {
                 <img src={home} alt='home' style={{opacity: 0.2}}/>
                 <div className={styles.navbarText}>Noticias</div>
             </div>
-            <a href="">
-                <div className={styles.search} >
-                    <img src={videos} alt='home'/>
-                    <div className={styles.navbarText}>Videos</div>
-                </div>
-            </a>
+            <div className={styles.search} >
+                <img src={videos} alt='home'/>
+                <div className={styles.navbarText}>Videos</div>
+            </div>
             <div className={styles.newpost} >
                     <img src={tv} alt='newpost' style={{opacity: 0.2}}/>
                     <div className={styles.navbarText}>TV</div>
