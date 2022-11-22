@@ -79,6 +79,9 @@ a {
   .copyright{
     display:none !important;
   }
+  .search-bar{
+    width:150px;
+  }
 }
 
 @media screen and (max-width: 600px) {
