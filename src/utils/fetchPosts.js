@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const BASE_URL = 'https://api.curator.io/v1/feeds/ab2a9623-54f8-4335-ae63-53c0623bf670/posts';
-export const CURATOR_API_KEY='170de80b-dd99-483d-8a02-854d8249b08b';
+export const CURATOR_API_KEY=process.env.CURATOR_API_KEY;
 
 const options = {
     params: {
