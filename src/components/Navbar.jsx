@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // import { logo } from "../utils/constants";
 import logo from '../assets/logo-white.png';
-import { SearchBar, SearchBarMobile } from "./";
+import { SearchBar, SearchBarMobile, Menu } from "./";
 
 const Navbar = () => (
   <>
@@ -11,6 +11,7 @@ const Navbar = () => (
     <Link to="/" style={{ display: "flex", alignItems: "center" }}>
       <img className="logo" src={logo} alt="logo" height={16} />
     </Link>
+    <Menu />
     <SearchBar />
   </Stack>
       {/* <div>
