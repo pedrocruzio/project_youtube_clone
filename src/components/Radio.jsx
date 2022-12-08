@@ -3,6 +3,7 @@ import { Box, Stack, Typography } from "@mui/material";
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
+import Iframe from 'react-iframe'
 
 
 const Radio = () => {
@@ -18,12 +19,19 @@ const Radio = () => {
 
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
-      <Box sx={{ height: { sx: "auto", md: "92vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
+      {/* <Box sx={{ height: { sx: "auto", md: "92vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
 
-      </Box>
+      </Box> */}
 
-      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
-
+      <Box p={2} sx={{ overflowY: "auto", height: "100vh", flex: 2 }}>
+      <Iframe url="https://moluscoradio.netlify.app/"
+                width="360px"
+                height="500px"
+                id=""
+                className=""
+                display="block"
+                position="relative"
+        />
       </Box>
     </Stack>
   );
