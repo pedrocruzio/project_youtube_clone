@@ -16,5 +16,6 @@ export { default as Menu } from './Menu';
 export { default as Radio } from './Radio';
 export { default as TV } from './TV';
 export { default as PostCard } from './PostCard';
+export { default as Profile } from './Profile';
 
 
