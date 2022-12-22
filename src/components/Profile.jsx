@@ -1,4 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import "../styles/Dashboard.module.css";
+import { auth, db, logout } from "../utils/firebase";
+import { query, collection, getDocs, where } from "firebase/firestore";
+
 import { Card, Box, CardContent, Avatar, Divider, Typography, TextField, InputLabel, InputBase, FormControl, Icon } from "@mui/material";
 import { alpha, styled } from '@mui/material/styles';
 
@@ -36,7 +42,34 @@ const ProfileTextField = styled((props) => (
 
 
 export const Profile = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
+
+  const fetchUserName = async () => {
+    try {
+      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+      const doc = await getDocs(q);
+      const data = doc.docs[0].data();
+
+      setName(data.name);
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    }
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/login");
+
+    console.log(user.email)
+
+    fetchUserName();
+  }, [user, loading]);
+
   return (
+    <Box>
     <Box
     component="form"
     sx={{
@@ -46,7 +79,7 @@ export const Profile = () => {
     autoComplete="off"
     >
         <Box display="flex" justifyContent="center" alignItems="center">
-        <Avatar src="https://i.ibb.co/tmYGV6t/Screen-Shot-2022-12-15-at-8-59-01-AM.png" sx={{ width: 180, height: 180, mb: 4,}}/>
+        <Avatar src="https://via.placeholder.com/150" sx={{ width: 180, height: 180, mb: 4,}}/>
 
         </Box>
         {/* <Typography variant="h4" fontWeight="bold" color="#FFF">
@@ -57,26 +90,26 @@ export const Profile = () => {
             <ProfileTextField
                 label="Nombre"
                 defaultValue="Jorge Pabón"
+                value={name}
                 id="nombre"
                 variant="filled"
                 style={{ marginTop: 11 }}
             />
             <ProfileTextField
                 label="Email"
-                defaultValue="jorge@molusco.com"
+                defaultValue="user@moluscotv.com"
+                value={user.email}
                 id="email"
                 variant="filled"
                 style={{ marginTop: 11 }}
             />
-            <ProfileTextField
-                label="Nombre"
-                defaultValue="Jorge Pabón"
-                id="nombre"
-                variant="filled"
-                style={{ marginTop: 11 }}
-            />
         </FormControl>
+        <button style={{marginTop: 24, textAlign: 'center'}} onClick={logout}>
+          Logout
+        </button>
     </Box>
+    </Box>
+
   );
 };
 
