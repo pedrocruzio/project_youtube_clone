@@ -13,9 +13,8 @@ const CONTENT_ID = '8154306f-14b9-7b71-e534-d1656113f2f0-vod-d1484505-d9eb-634e-
 const TV = () => {
 
     const loadPlayer = () => {
-      window["dacast"](CONTENT_ID, 'myDiv', {
-        width: 350,
-        height: 200,
+      window["dacast"](CONTENT_ID, 'dacastVideo', {
+        width: 500,
         player: 'flow'
       });
     }
@@ -29,7 +28,7 @@ const TV = () => {
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
 
-      <div id="myDiv"></div>
+      <div id="dacastVideo"></div>
 
         {/* <Iframe url="https://iframe.dacast.com/live/8154306f-14b9-7b71-e534-d1656113f2f0/a95af759-b964-6005-b925-3c7f0d7ef9a7"
                 width="90%"

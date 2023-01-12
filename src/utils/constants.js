@@ -28,6 +28,11 @@ export const categories = [
   { name: 'Live', icon: <LiveTvIcon />, },
 ];
 
+export const radioList = [
+  { name: 'Música', icon: <MusicNoteIcon /> },
+  { name: 'Molusco Live', icon: <LiveTvIcon />, },
+];
+
 export const menuItems = [
   { name: 'Noticias', icon: <HomeIcon />, link: '/' },
   { name: 'Videos', icon: <Subscriptions />, link: '/videos' },

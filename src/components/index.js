@@ -11,6 +11,7 @@ export { default as SearchFeed } from './SearchFeed';
 export { default as Videos } from './Videos';
 export { default as VideoFeed } from './VideoFeed';
 export { default as Sidebar } from './Sidebar';
+export { default as RadioSidebar } from './RadioSidebar';
 export { default as BottomNav } from './BottomNav';
 export { default as Menu } from './Menu';
 export { default as Radio } from './Radio';
@@ -18,6 +19,7 @@ export { default as TV } from './TV';
 export { default as PostCard } from './PostCard';
 export { default as Profile } from './Profile';
 export { default as Login } from './Login';
+export { default as SignIn } from './SignIn';
 export { default as Register } from './Register';
 export { default as Dashboard } from './Dashboard';
 
