@@ -56,7 +56,7 @@ function BottomNav() {
                 </div>
             </Link>
 
-            <Link to='/perfil'>
+            {/* <Link to='/perfil'>
                 <div className={styles.heart} >
                     <img src={perfil} alt='perfil' style={{opacity: 1}}/>
                     <div className={styles.navbarText}>
@@ -65,7 +65,7 @@ function BottomNav() {
                     </Typography>
                     </div>
                 </div>
-            </Link>
+            </Link> */}
 
         </div>
     )
