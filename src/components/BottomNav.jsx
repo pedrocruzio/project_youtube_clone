@@ -8,9 +8,14 @@ import tv from '../assets/tv.png';
 import perfil from '../assets/perfil.png'
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../utils/firebase.js";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 
 
 function BottomNav() {
+    const [user, loading, error] = useAuthState(auth);
+
 
     return (
         <div className={styles.mainNav}>
@@ -66,6 +71,30 @@ function BottomNav() {
                     </div>
                 </div>
             </Link> */}
+            {user ?             
+                <Link to='/perfil'>
+                <div className={styles.heart} >
+                    <img src={perfil} alt='perfil' style={{opacity: 1}}/>
+                    <div className={styles.navbarText}>
+                    <Typography variant="caption" mb={2} sx={{ color: "white", opacity: 1 }}>
+                        Perfil
+                    </Typography>
+                    </div>
+                </div>
+            </Link>
+            :
+            <Link to='/signin'>
+            <div className={styles.heart} >
+                <img src={perfil} alt='perfil' style={{opacity: 1}}/>
+                <div className={styles.navbarText}>
+                <Typography variant="caption" mb={2} sx={{ color: "white", opacity: 1 }}>
+                    Perfil
+                </Typography>
+                </div>
+            </div>
+        </Link>
+
+            }
 
         </div>
     )

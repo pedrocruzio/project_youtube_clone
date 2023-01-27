@@ -15,7 +15,8 @@ import {
   Login,
   Register,
   Dashboard,
-  SignIn
+  SignIn,
+  SignUp
 } from './components';
 
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => (
         <Route path='/perfil' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/register' element={<Register />} />
         <Route path='/dashboard' element={<Dashboard />} />
       </Routes>

@@ -16,7 +16,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import signInBg from '../assets/signin-bg.png';
 
 import { Link, useNavigate } from "react-router-dom";
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../utils/firebase.js";
+import {
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../utils/firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "../styles/Login.module.css";
 import { Facebook } from "@mui/icons-material";
@@ -26,7 +30,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://moluscotv.com/">
+      <Link color="inherit" to="">
         MoluscoTV
       </Link>{' '}
       {new Date().getFullYear()}
@@ -37,20 +41,22 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignInSide() {
+export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
+  const register = () => {
+    if (!name) alert("Please enter name");
+    registerWithEmailAndPassword(name, email, password);
+  };
+
   useEffect(() => {
-    if (loading) {
-      // TODO: trigger a loading screen
-      return;
-    }
+    if (loading) return;
     if (user) navigate("/perfil");
   }, [user, loading]);
-
 
 
   const handleSubmit = (event) => {
@@ -95,9 +101,21 @@ export default function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" color={'#000'}>
-              Sign in
+              Sign Up
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                name="name"
+                autoComplete="name"
+                autoFocus
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
               <TextField
                 margin="normal"
                 required
@@ -128,14 +146,15 @@ export default function SignInSide() {
               />
               <Button
                 type="submit"
-                onClick={() => logInWithEmailAndPassword(email, password)}
+                onClick={() => registerWithEmailAndPassword(name, email, password)}
                 fullWidth
                 color="error"
                 variant="contained"
                 sx={{ mt: 3, mb: 1 }}
               >
-                Sign In
+                Sign Up
               </Button>
+
               <Button
                 type="submit"
                 startIcon={<FacebookIcon/>}
@@ -147,6 +166,7 @@ export default function SignInSide() {
               >
                 Continue With Facebook
               </Button>
+
               <Button
                 type="submit"
                 startIcon={<GoogleIcon/>}
@@ -160,17 +180,11 @@ export default function SignInSide() {
               </Button>
 
               <Grid container>
-                <Grid item xs>
-                  <Link to="/reset" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link to="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+                <Link to="/signin" variant="body2" align="center">
+                  {"Already have an account? Sign In"}
+                </Link>
               </Grid>
+
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>

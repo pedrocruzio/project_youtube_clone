@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.module.css";
 import { auth, db, logout } from "../utils/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { Person } from "@mui/icons-material";
 
-import { Card, Box, Button, CardContent, Avatar, Divider, Typography, TextField, InputLabel, InputBase, FormControl, Icon } from "@mui/material";
+import { Card, Box, CardContent, Avatar, Divider, Typography, TextField, InputLabel, InputBase, FormControl, Icon } from "@mui/material";
 import { alpha, styled } from '@mui/material/styles';
 
 
@@ -43,11 +42,8 @@ const ProfileTextField = styled((props) => (
 
 
 export const Profile = () => {
-  // if (!user) navigate("/signin");
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [user, loading, error] = useAuthState(auth);
+  const [name, setName] = useState("");
   const navigate = useNavigate();
 
   const fetchUserName = async () => {
@@ -59,48 +55,34 @@ export const Profile = () => {
       setName(data.name);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data...");
+      alert("An error occured while fetching user data");
     }
   };
 
-  const logoutSession = async () => {
-    try {
-      logout()
-
-      navigate('/')
-    } catch (err) {
-      console.error(err)
-    }
-  }
- 
-  useEffect(() => {
-    console.log(user.email)
+  useEffect((fetchUserName,navigate) => {
+    if (!user) return navigate("/login");
 
     if (loading) return;
-    if (!user) navigate("/signin");
 
-
+    console.log(user.email)
 
     fetchUserName();
   }, [user, loading]);
 
   return (
     <Box>
-      <Box
-      component="form"
-      sx={{
-      padding: 8,
-      }}
-      noValidate
-      autoComplete="off"
-      >
+    <Box
+    component="form"
+    sx={{
+    padding: 8,
+    }}
+    noValidate
+    autoComplete="off"
+    >
         <Box display="flex" justifyContent="center" alignItems="center">
-          <Avatar sx={{ width: 180, height: 180, mb: 4, bgcolor: "#000"}}>
-            <Person sx={{fontSize: 150}}></Person>
-          </Avatar>
-        </Box>
-        {/* <Typography sx={{color: 'white'}}>Change Picture</Typography> */}
+        <Avatar src="https://via.placeholder.com/150" sx={{ width: 180, height: 180, mb: 4,}}/>
 
+        </Box>
         {/* <Typography variant="h4" fontWeight="bold" color="#FFF">
         Jorge Pabón
         </Typography> */}
@@ -123,17 +105,12 @@ export const Profile = () => {
                 style={{ marginTop: 11 }}
             />
         </FormControl>
-        <Button
-          onClick={logoutSession}
-          fullWidth
-          color="error"
-          variant="contained"
-          sx={{ mt: 3, mb: 1 }}
-        >
+        <button style={{marginTop: 24, textAlign: 'center'}} onClick={logout}>
           Logout
-        </Button>
+        </button>
     </Box>
     </Box>
+
   );
 };
 
