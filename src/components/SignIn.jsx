@@ -83,12 +83,12 @@ export default function SignInSide() {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
-              my: 8,
+              my: 2,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              backgroundColor: '#fff'
+              backgroundColor: '#fff',
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'red' }}>
