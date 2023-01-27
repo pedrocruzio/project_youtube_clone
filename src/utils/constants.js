@@ -38,7 +38,7 @@ export const menuItems = [
   { name: 'Videos', icon: <Subscriptions />, link: '/videos' },
   { name: 'TV', icon: <LiveTvIcon />, link: '/tv' },
   { name: 'Radio', icon: <GraphicEqIcon />, link: '/radio'},
-  { name: 'Perfil', icon: <AccountCircle />, link: '/perfil'},
+  { name: 'Perfil', icon: <AccountCircle />, link: '/signin'},
 ];
 
 export const demoThumbnailUrl = 'https://i.ibb.co/G2L2Gwp/API-Course.png';
