@@ -21,7 +21,7 @@ import {
 
 const firebaseConfig = {
     apiKey: "AIzaSyASan0IqHT2yJug7xBxSh3xYmLisnPFtHE",
-    authDomain: "molusco.netlify.app",
+    authDomain: "teak-backup-351415.firebaseapp.com",
     projectId: "teak-backup-351415",
     storageBucket: "teak-backup-351415.appspot.com",
     messagingSenderId: "142398148037",
