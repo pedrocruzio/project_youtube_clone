@@ -16,7 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import signInBg from '../assets/signin-bg.png';
 
 import { Link, useNavigate } from "react-router-dom";
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../utils/firebase.js";
+import { auth, logInWithEmailAndPassword, signInWithGoogle, signInWithFacebook } from "../utils/firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "../styles/Login.module.css";
 import { Facebook } from "@mui/icons-material";
@@ -139,7 +139,7 @@ export default function SignInSide() {
               <Button
                 type="submit"
                 startIcon={<FacebookIcon/>}
-                onClick={signInWithGoogle}
+                onClick={signInWithFacebook}
                 fullWidth
                 color="primary"
                 variant="contained"
